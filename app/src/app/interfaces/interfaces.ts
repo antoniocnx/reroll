@@ -1,3 +1,44 @@
+export interface Usuario {
+  _id?: string;
+  nombre?: string;
+  apellidos?: string;
+  email?: string;
+  password?: string;
+  nacimiento?: Date;
+  sexo?: string;
+  direccion?: string;
+  ciudad?: string;
+  localidad?: string;
+  pais?: string;
+  cp?: number;
+  avatar?: string;
+}
+
+export interface Administrador {
+  _id?: string;
+  nombre?: string;
+  apellidos?: string;
+  email?: string;
+  password?: string;
+  nacimiento?: Date;
+  sexo?: string;
+  direccion?: string;
+  ciudad?: string;
+  localidad?: string;
+  pais?: string;
+  cp?: number;
+  avatar?: string;
+}
+
+export interface Post {
+  _id?: string;
+  mensaje?: string;
+  imgs?: string[];
+  coords?: string;
+  usuario?: Usuario;
+  created?: string;
+}
+
 export interface RespuestaPost {
   ok: boolean;
   pagina: number;
@@ -16,6 +57,7 @@ export interface RespuestaLogin {
 
 export interface RespuestaSignUp {
   status: string;
+  token: string;
   message?: string;
 }
 
@@ -24,38 +66,7 @@ export interface RespuestaUsuario {
   usuario: Usuario;
 }
 
-export interface Post {
-  _id?: string;
-  mensaje?: string;
-  imgs?: string[];
-  coords?: string;
-  usuario?: Usuario;
-  created?: string;
+export interface RespuestaAdmin {
+  ok: boolean;
+  admin: Usuario;
 }
-
-export interface Usuario {
-  _id?: string;
-  nombre?: string;
-  apellidos?: string;
-  email?: string;
-  password?: string;
-  nacimiento?: Date;
-  sexo?: string;
-  direccion?: string;
-  ciudad?: string;
-  localidad?: string;
-  pais?: string;
-  cp?: string;
-  avatar?: string;
-}
-
-// export interface Juego {
-  // _id?: string;
-  // titulo?: string;
-  // precio?: number;
-  // mensaje?: string;
-  // imgs?: string[];
-  // coords?: string;
-  // usuario?: Usuario;
-  // created?: string;
-// }

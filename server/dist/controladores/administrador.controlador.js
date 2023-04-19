@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const administrador_1 = require("../modelos/administrador");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const token_1 = __importDefault(require("../clases/token"));
+const token_admin_1 = __importDefault(require("../clases/token-admin"));
 class administradorControlador {
     get(req, res) {
         const admin = req.admin;
@@ -31,7 +31,7 @@ class administradorControlador {
             avatar: req.body.avatar
         };
         administrador_1.Administrador.create(admin).then(adminDB => {
-            const tokenAdmin = token_1.default.getJwtToken({
+            const tokenAdmin = token_admin_1.default.getJwtTokenAdmin({
                 _id: adminDB._id,
                 nombre: adminDB.nombre,
                 apellidos: adminDB.apellidos,
@@ -85,7 +85,7 @@ class administradorControlador {
                     mensaje: 'No existe un administrador con ese ID'
                 });
             }
-            const tokenAdmin = token_1.default.getJwtToken({
+            const tokenAdmin = token_admin_1.default.getJwtTokenAdmin({
                 _id: adminDB._id,
                 nombre: adminDB.nombre,
                 apellidos: adminDB.apellidos,
@@ -117,7 +117,7 @@ class administradorControlador {
                 });
             }
             if (adminDB.compararPassword(body.password)) {
-                const tokenAdmin = token_1.default.getJwtToken({
+                const tokenAdmin = token_admin_1.default.getJwtTokenAdmin({
                     _id: adminDB._id,
                     nombre: adminDB.nombre,
                     apellidos: adminDB.apellidos,

@@ -1,0 +1,43 @@
+<ion-content  class="ion-text-center">
+  <div class="form-container">
+    <form [formGroup]="formLogin" (ngSubmit)="login(formLogin)">
+    <ion-grid fixed>
+
+      <ion-row>
+        <ion-col>
+          <img src="/assets/avatars/av-luffy.png">
+        </ion-col>
+      </ion-row>
+    
+      <ion-row>
+        <ion-col>
+          
+            <ion-list>
+              
+              <ion-item>
+                <ion-label position="floating">Email:</ion-label>
+                <ion-input type="email" class="form-control" formControlName="email" placeholder="Email"></ion-input>
+              </ion-item>
+      
+              <ion-item>
+                <ion-label position="floating">Contraseña:</ion-label>
+                <ion-input type="password" class="form-control" formControlName="password" placeholder="Contraseña"></ion-input>
+              </ion-item>
+
+            </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit"
+                      color="tertiary"
+                      shape="round">
+            Ingresar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</div>
+</ion-content>

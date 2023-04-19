@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 import { IAdministrador, Administrador } from "../modelos/administrador";
 import bcrypt from "bcrypt";
-import Token from '../clases/token';
+import TokenAdmin from '../clases/token-admin';
 
 class administradorControlador {
 
@@ -34,7 +34,7 @@ class administradorControlador {
     
         Administrador.create( admin ).then(adminDB => {
     
-            const tokenAdmin = Token.getJwtToken({
+            const tokenAdmin = TokenAdmin.getJwtTokenAdmin({
                 _id: adminDB._id,
                 nombre: adminDB.nombre,
                 apellidos: adminDB.apellidos,
@@ -91,7 +91,7 @@ class administradorControlador {
                 });
             }
 
-            const tokenAdmin = Token.getJwtToken({
+            const tokenAdmin = TokenAdmin.getJwtTokenAdmin({
                 _id: adminDB._id,
                 nombre: adminDB.nombre,
                 apellidos: adminDB.apellidos,
@@ -124,7 +124,7 @@ class administradorControlador {
                 });
             }
             if ( adminDB.compararPassword( body.password ) ) {
-                const tokenAdmin = Token.getJwtToken({
+                const tokenAdmin = TokenAdmin.getJwtTokenAdmin({
                     _id: adminDB._id,
                     nombre: adminDB.nombre,
                     apellidos: adminDB.apellidos,

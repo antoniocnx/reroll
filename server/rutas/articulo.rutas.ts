@@ -6,9 +6,9 @@ const articuloRutas = Router();
 
 articuloRutas.get('/get', articuloControlador.prototype.get);
 articuloRutas.post('/post', verificaToken, articuloControlador.prototype.post);
+articuloRutas.put('/update/:articulo_id', articuloControlador.prototype.update);
 articuloRutas.post('/upload', verificaToken, articuloControlador.prototype.upload);
 articuloRutas.get('/imagen/:userid/:img', articuloControlador.prototype.getImg);
-// WIP
-articuloRutas.delete('/delete/:postId', verificaToken, articuloControlador.prototype.delete);
+articuloRutas.delete('/delete/:articulo_id', verificaToken, articuloControlador.prototype.delete);
 
 export default articuloRutas;

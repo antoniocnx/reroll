@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { LoginAdminPageRoutingModule } from './login-admin-routing.module';
 
-import { LoginPage } from './login.page';
-import { ComponentsModule } from '../../components/components.module';
+import { LoginAdminPage } from './login-admin.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
@@ -15,11 +15,11 @@ import { SwiperModule } from 'swiper/angular';
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    LoginAdminPageRoutingModule,
     ComponentsModule,
     ReactiveFormsModule,
     SwiperModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginAdminPage]
 })
-export class LoginPageModule {}
+export class LoginAdminPageModule {}

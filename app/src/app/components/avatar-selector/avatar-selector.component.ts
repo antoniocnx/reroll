@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 
+import SwiperCore, { SwiperOptions, Pagination } from 'swiper';
+
+SwiperCore.use([Pagination]);
+
 @Component({
   selector: 'app-avatar-selector',
   templateUrl: './avatar-selector.component.html',

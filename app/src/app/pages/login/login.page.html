@@ -4,7 +4,10 @@
     
     <ion-slide>
 
-      <form (ngSubmit)="login(formLogin)" #formLogin='ngForm'>
+      <ion-icon class="icon-admin" name="shield-half-outline" [routerLink]="['/login-admin']">Administrador</ion-icon>
+      <div class="form-container">
+      <!-- <form (ngSubmit)="login(formLogin)" #formLogin='ngForm'> -->
+      <form [formGroup]="formLogin" (ngSubmit)="login(formLogin)">
         <ion-grid fixed>
 
           <ion-row>
@@ -15,12 +18,11 @@
         
           <ion-row>
             <ion-col>
-              
                 <ion-list>
                   
-                  <ion-item>
+                  <!-- <ion-item>
                     <!-- <ion-label>Email</ion-label> -->
-                    <!-- Podría añadir [(ngModel)]="loginUsuario.email" si quisiera que apareciera ya escrito el email del usuario -->
+                    <!-- Podría añadir [(ngModel)]="loginUsuario.email" si quisiera que apareciera ya escrito el email del usuario
                     <ion-input name="email"
                                 type="email"
                                 placeholder="Email"
@@ -30,12 +32,22 @@
 
                   <ion-item>
                     <!-- <ion-label>Contraseña</ion-label> -->
-                    <!-- Podría añadir [(ngModel)]="loginUsuario.password" si quisiera que apareciera ya escrito el password del usuario -->
+                    <!-- Podría añadir [(ngModel)]="loginUsuario.password" si quisiera que apareciera ya escrito el password del usuario
                     <ion-input name="password"
                                 type="password"
                                 placeholder="Contraseña"
                                 [(ngModel)]="loginUsuario.password"
                                 required></ion-input>
+                  </ion-item> -->
+
+                  <ion-item>
+                    <ion-label position="floating">Email:</ion-label>
+                    <ion-input type="email" class="form-control" formControlName="email" placeholder="Email"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Contraseña:</ion-label>
+                    <ion-input type="password" class="form-control" formControlName="password" placeholder="Contraseña"></ion-input>
                   </ion-item>
 
                 </ion-list>
@@ -54,164 +66,110 @@
 
         </ion-grid>
       </form>
-    
+      </div>
     </ion-slide>
 
     <ion-slide>
-
-      <ion-grid fixed>
+      
+      <ion-content scrollY="true">
+      
+        <ion-grid fixed>
 
           <!-- Avatar selector -->
-          <app-avatar-selector (avatarSeleccionado)="registroUsuario.avatar = $event"></app-avatar-selector>
-        
-            <form (ngSubmit)="signup(formSignup)" #formSignup='ngForm'>
-                <ion-row>
-                    <ion-col>
-                        
-                        <ion-list>
-
-                          <ion-item>
-                            <ion-label position="floating">Nombre:</ion-label>
-                            <!-- Podría añadir [(ngModel)]="usuario.nombre" si quisiera que apareciera ya escrito el nombre del usuario -->
-                            <ion-input name="nombre"
-                            type="text"
-                            placeholder="Nombre"
-                            [clearInput]="true"
-                            required></ion-input>
-                          </ion-item>
-                          
-                          <ion-item>
-                            <ion-label position="floating">Apellidos:</ion-label>
-                            <!-- Podría añadir [(ngModel)]="usuario.nombre" si quisiera que apareciera ya escrito el nombre del usuario -->
-                            <ion-input name="apellidos"
-                            type="text"
-                            placeholder="Apellidos"
-                            [clearInput]="true"
-                            required></ion-input>
-                          </ion-item>
-
-                          <ion-item>
-                          <ion-label position="floating">Email:</ion-label>
-                          <!-- Podría añadir [(ngModel)]="usuario.email" si quisiera que apareciera ya escrito el email del usuario -->
-                          <ion-input name="email" 
-                                      type="email"
-                                      placeholder="Email"
-                                      [clearInput]="true"
-                                      required></ion-input>
-                          </ion-item>
-
-                            <ion-item>
-                            <ion-label position="floating">Contraseña:</ion-label>
-                            <!-- Podría añadir [(ngModel)]="usuario.password" si quisiera que apareciera ya escrito el password del usuario -->
-                            <ion-input name="password"
-                                        type="password"
-                                        placeholder="Contraseña"
-                                        [clearInput]="true"
-                                        required></ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                              <ion-label position="floating">Fecha de nacimiento:</ion-label>
-                              <ion-input type="date" name="fechaNacimiento" placeholder="Seleccione la fecha" required></ion-input>
-                            </ion-item>
-                            
-                            <!-- <ion-item position="floating">
-                              <ion-label>Sexo:</ion-label>
-                              <ion-checkbox name="sexo" value="hombre" slot="start"></ion-checkbox>
-                              <ion-label slot="start">Hombre</ion-label>
-                            </ion-item>
-                            
-                            <ion-item>
-                              <ion-checkbox name="sexo" value="mujer" slot="start"></ion-checkbox>
-                              <ion-label slot="start">Mujer</ion-label>
-                            </ion-item> -->
-
-                            <ion-item>
-                              <ion-label>Sexo:</ion-label>
-                            </ion-item>
-                            <ion-item>
-                              <ion-radio-group name="sexo">
-                                <ion-item>
-                                  <ion-radio value="hombre"></ion-radio>
-                                  <ion-label>Hombre</ion-label>
-                                </ion-item>
-                                <ion-item>
-                                  <ion-radio value="mujer"></ion-radio>
-                                  <ion-label>Mujer</ion-label>
-                                </ion-item>
-                              </ion-radio-group>
-                            </ion-item>
-                                                        
-                            <ion-item>
-                              <ion-label position="floating">Dirección:</ion-label>
-                              <ion-input name="direccion" 
-                                          type="text"
-                                          placeholder="Dirección"
-                                          [clearInput]="true"
-                                          required>
-                              </ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                              <ion-label position="floating">Ciudad:</ion-label>
-                              <ion-input name="ciudad" 
-                                          type="text"
-                                          placeholder="Ciudad"
-                                          [clearInput]="true"
-                                          required>
-                              </ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                              <ion-label position="floating">Localidad:</ion-label>
-                              <ion-input name="localidad" 
-                                          type="text"
-                                          placeholder="Localidad"
-                                          [clearInput]="true"
-                                          required>
-                              </ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                              <ion-label position="floating">País:</ion-label>
-                              <ion-input name="pais" 
-                                          type="text"
-                                          placeholder="País"
-                                          [clearInput]="true"
-                                          required>
-                              </ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                              <ion-label position="floating">Código postal:</ion-label>
-                              <ion-input name="cp" 
-                                          type="number"
-                                          placeholder="Código postal"
-                                          [clearInput]="true"
-                                          required>
-                              </ion-input>
-                            </ion-item>
-
-                        </ion-list>
-                    </ion-col>
-                </ion-row>
-                
-                <ion-row>
-                    <ion-col>
-                        <ion-button type="submit"
-                                    color="tertiary"
-                                    shape="round">
-                            Crear usuario
-                        </ion-button>
-                    </ion-col>
-                </ion-row>
-              
-            </form>
+          
+          <app-avatar-selector (avatarSeleccionado)="formSignup.get('avatar')?.setValue($event)"></app-avatar-selector>
+          
+          <form [formGroup]="formSignup" (ngSubmit)="signup(formSignup)"><!-- (ngSubmit)="valorFormulario()" -->
+            <ion-row>
+              <ion-col>
+                <ion-list>
+          
+                  <ion-item>
+                    <ion-label position="floating">Nombre:</ion-label>
+                    <ion-input type="text" class="form-control" formControlName="nombre" placeholder="Nombre"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Apellidos:</ion-label>
+                    <ion-input type="text" class="form-control" formControlName="apellidos" placeholder="Apellidos"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Email:</ion-label>
+                    <ion-input type="email" class="form-control" formControlName="email" placeholder="Email"></ion-input>
+                    <span class="form-text text-danger" *ngIf="formSignup.get('email')?.hasError('emailAdminNoValido')">
+                      Email inválido. No se permiten direcciones de correo que terminen en "@admin.com".
+                    </span>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Contraseña:</ion-label>
+                    <ion-input type="password" class="form-control" formControlName="password" placeholder="Contraseña"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Fecha de nacimiento:</ion-label>
+                    <ion-input type="date" class="form-control" formControlName="nacimiento" placeholder="Seleccione la fecha"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label>Sexo:</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-radio-group class="form-control" formControlName="sexo">
+                      <ion-item>
+                        <ion-radio value="Hombre"></ion-radio>
+                        <ion-label>Hombre</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-radio value="Mujer"></ion-radio>
+                        <ion-label>Mujer</ion-label>
+                      </ion-item>
+                    </ion-radio-group>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Dirección:</ion-label>
+                    <ion-input type="text" class="form-control" formControlName="direccion" placeholder="Dirección"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Ciudad:</ion-label>
+                    <ion-input type="text" class="form-control" formControlName="ciudad" placeholder="Ciudad"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Localidad:</ion-label>
+                    <ion-input type="text" class="form-control" formControlName="localidad" placeholder="Localidad"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">País:</ion-label>
+                    <ion-input type="text" class="form-control" formControlName="pais" placeholder="País"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating">Código postal:</ion-label>
+                    <ion-input type="number" class="form-control" formControlName="cp" placeholder="Código postal"></ion-input>
+                  </ion-item>
+          
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" color="tertiary" shape="round">Crear usuario</ion-button>
+              </ion-col>
+            </ion-row>
+          
+          </form>
+          
         </ion-grid>
-  
-  
-      </ion-slide>
 
+      </ion-content>
+      
+    </ion-slide>
 
   </ion-slides>
 

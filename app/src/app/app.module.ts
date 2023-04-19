@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     IonicModule.forRoot(), 
     AppRoutingModule,
     ComponentsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

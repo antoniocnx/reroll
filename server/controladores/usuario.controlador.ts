@@ -2,7 +2,6 @@ import { Request, Response, Router } from "express";
 import { IUsuario, Usuario } from "../modelos/usuario";
 import bcrypt from "bcrypt";
 import Token from '../clases/token';
-import { Favorito } from "../modelos/favorito";
 // import { Direccion } from "../interfaces/direccion";
 
 class usuarioControlador {
@@ -67,61 +66,6 @@ class usuarioControlador {
             }
         })
     };
-
-    // create(req: Request, res: Response) {
-    //     const direccion = {
-    //         calle: req.body.direccion.calle,
-    //         numero: req.body.direccion.numero,
-    //         adicional: req.body.direccion.adicional,
-    //         cp: req.body.direccion.cp,
-    //         provincia: req.body.direccion.provincia,
-    //         localidad: req.body.direccion.localidad
-    //     };
-
-    //     const user = {
-    //         nombre   : req.body.nombre,
-    //         apellidos   : req.body.apellidos,
-    //         email    : req.body.email,
-    //         password : bcrypt.hashSync(req.body.password, 10),
-    //         direccion   : direccion,
-    //         nacimiento   : req.body.nacimiento,
-    //         sexo   : req.body.sexo,
-    //         avatar   : req.body.avatar
-    //     };
-    
-    //     Usuario.create( user ).then(userDB => {
-    //         // const direccionStr = `${userDB.direccion.calle} ${userDB.direccion.numero}, ${userDB.direccion.adicional ? userDB.direccion.adicional + ', ' : ''}${userDB.direccion.cp}, ${userDB.direccion.provincia}, ${userDB.direccion.localidad}`;
-    //         const tokenUser = Token.getJwtToken({
-    //             _id: userDB._id,
-    //             nombre: userDB.nombre,
-    //             apellidos: userDB.apellidos,
-    //             email: userDB.email,
-    //             direccion: // direccionStr,
-    //                 userDB.direccion.calle + ' ' + 
-    //                 userDB.direccion.numero + ', ' + 
-    //                 userDB.direccion.adicional + ', ' + 
-    //                 userDB.direccion.cp + ', ' + 
-    //                 userDB.direccion.provincia + ', ' + 
-    //                 userDB.direccion.localidad,    
-    //             nacimiento: userDB.nacimiento,
-    //             sexo: userDB.sexo,
-    //             avatar: userDB.avatar
-    //         });
-            
-    //         if(user) {
-    //             return res.status(200).json({
-    //                 status: 'Ok',
-    //                 message: `El usuario ${userDB.email} ha sido creado correctamente.`,
-    //                 token: tokenUser
-    //             });
-    //         } else {
-    //             return res.status(500).json({
-    //                 status: 'Fail',
-    //                 message: 'No hay usuario'
-    //             });
-    //         }
-    //     })
-    // };
 
     update(req: any, res: Response) {
         const user = {
@@ -211,22 +155,6 @@ class usuarioControlador {
             }
         })
     };
-
-    async favoritos(req: Request, res: Response) {
-        try {
-            const userId = req.params.id;
-            const usuario = await Usuario.findById(userId);
-            if (!usuario) {
-                return res.status(404).send({ mensaje: 'Usuario no encontrado' });
-            }
-            const favoritos = await Favorito.find({ usuario: userId }).populate('articulo').exec();
-            res.json(favoritos);
-        } catch (error) {
-            console.log(error);
-            res.status(500).send({ mensaje: 'Error al obtener los favoritos' });
-        }
-    }
-
     
 }
 

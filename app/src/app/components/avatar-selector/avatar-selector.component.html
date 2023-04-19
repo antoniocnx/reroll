@@ -4,7 +4,20 @@
   </ion-col>
 </ion-row>
 
-  <ion-row>
+<ion-row>
+  <ion-col>
+    <swiper [config]="avatarSlide">
+      <ng-template swiperSlide *ngFor="let avatar of avatars">
+          <ion-img class="pick-avatar" 
+                  src="/assets/avatars/{{avatar.img}}"
+                  [ngClass]="{'pick-avatar-seleccionado': avatar.seleccionado}"
+                  (click)="seleccionarAvatar(avatar)"></ion-img>
+      </ng-template>
+    </swiper>
+  </ion-col>
+</ion-row>
+
+  <!-- <ion-row>
     <ion-col>
       <ion-slides [options]="avatarSlide">
         <ion-slide *ngFor="let avatar of avatars">
@@ -15,4 +28,4 @@
         </ion-slide>
       </ion-slides>
     </ion-col>
-  </ion-row>
+  </ion-row> -->

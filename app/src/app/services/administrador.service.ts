@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Storage } from '@ionic/storage';
 import { environment } from 'src/environments/environment';
-import { RespuestaLogin, RespuestaSignUp, RespuestaUsuario, Usuario } from '../interfaces/interfaces';
+import { Storage } from '@ionic/storage';
+import { Administrador, RespuestaAdmin, RespuestaLogin, RespuestaSignUp, RespuestaUsuario, Usuario } from '../interfaces/interfaces';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 
 const url = environment.url;
@@ -10,10 +10,9 @@ const url = environment.url;
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
-
+export class AdministradorService {
   token: string = '';
-  private usuario: Usuario = {};
+  private admin: Administrador = {};
 
   constructor(private http: HttpClient,
               private storage: Storage,
@@ -29,11 +28,11 @@ export class UsuarioService {
 
   }
 
-  getUsuario() {
-    if(!this.usuario._id) {
+  getAdmin() {
+    if(!this.admin._id) {
       this.validaToken();
     }
-    return {...this.usuario};
+    return {...this.admin};
   }
 
   login(email: string, password: string) {
@@ -41,7 +40,7 @@ export class UsuarioService {
     
     return new Promise(resolve => {
 
-      this.http.post<RespuestaLogin>(`${url}/usuario/login`, data)
+      this.http.post<RespuestaLogin>(`${url}/administrador/login`, data)
                 .subscribe(async resp => {
                   console.log(resp);
   
@@ -62,15 +61,14 @@ export class UsuarioService {
 
   logout() {
     this.token = '';
-    this.usuario = {};
+    this.admin = {};
     this.storage.clear();
     this.navCrtl.navigateRoot('login', {animated: true});
   }
 
-  registro(usuario: Usuario) {
-    console.log(usuario);
+  registro(admin: Administrador) {
     return new Promise( resolve => {
-      this.http.post<RespuestaSignUp>(`${url}/usuario/create`, usuario)
+      this.http.post<RespuestaSignUp>(`${url}/administrador/create`, admin)
                 .subscribe( resp => {
                   console.log(resp);
 
@@ -86,24 +84,6 @@ export class UsuarioService {
                 })
     });
   }
-
-  // registro(usuario: Usuario) {
-  //   return new Promise( resolve => {
-  //     this.http.post<RespuestaSignUp>(`${url}/usuario/create`, usuario)
-  //               .subscribe( resp => {
-  //                 console.log(resp);
-
-  //                 if( resp.status === 'ok' ) {
-  //                   resolve(true);
-  //                   if (usuario.email !== undefined && usuario.password !== undefined) {
-  //                     this.login(usuario.email, usuario.password);
-  //                   }
-  //                 }
-                  
-  //               })
-  //   });
-  // }
-
 
   async guardarToken(token: string) {
     this.token = token;
@@ -122,34 +102,34 @@ export class UsuarioService {
     await this.cargarToken();
 
     if(this.token === '') {
-      this.navCrtl.navigateRoot('/login');
+      this.navCrtl.navigateRoot('/login-administrador');
       return Promise.resolve(false);
     }
 
     return new Promise<boolean>(resolve => {
       const headers = new HttpHeaders({
-        'x-token': this.token
+        'y-token': this.token
       });
-      this.http.get<RespuestaUsuario>(`${url}/usuario/get`, { headers })
+      this.http.get<RespuestaAdmin>(`${url}/administrador/get`, { headers })
               .subscribe(resp => {
                 if(resp['ok']) {
-                  this.usuario = resp['usuario'];
+                  this.admin = resp['admin'];
                   resolve(true);
                 } else {
-                  this.navCrtl.navigateRoot('/login');
+                  this.navCrtl.navigateRoot('/login-administrador');
                   resolve(false);
                 }
               })
     });
   }
 
-  actualizarUsuario(usuario: Usuario) {
+  actualizarAdmin(admin: Administrador) {
     const headers = new HttpHeaders({
-      'x-token': this.token
+      'y-token': this.token
     });
 
     return new Promise(resolve => {
-      this.http.post<RespuestaLogin>(`${url}/usuario/update`, usuario, { headers })
+      this.http.post<RespuestaLogin>(`${url}/administrador/update`, admin, { headers })
                 .subscribe(resp => {
                   if(resp['ok']) {
                     this.guardarToken(resp['token']);
@@ -161,5 +141,4 @@ export class UsuarioService {
     })
 
   }
-
 }

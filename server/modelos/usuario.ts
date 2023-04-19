@@ -1,7 +1,6 @@
 import mongoose, { Schema, model, Document } from "mongoose";
 import bcrypt from 'bcrypt';
 import { Direccion } from '../interfaces/direccion';
-import { Favorito } from './favorito';
 import { Articulo } from "./articulo";
 
 const usuarioSchema = new Schema({

@@ -35,6 +35,31 @@ export default class Token {
 
     }
 
+    // static getJwtTokenAdmin( payload: any ): string {
+    //     return jwt.sign({
+    //         admin: payload
+    //     }, this.seed, { expiresIn: this.caducidad });
+    // }
+
+    // static comprobarTokenAdmin( adminToken: string ) {
+
+    //     return new Promise( (resolve, reject ) => {
+
+    //         jwt.verify( adminToken, this.seed, ( err: any, decoded: unknown ) => {
+    
+    //             if ( err ) {
+    //                 reject();
+    //             } else {
+    //                 resolve( decoded );
+    //             }
+    
+    
+    //         })
+
+    //     });
+
+    // }
+
 
 }
 
