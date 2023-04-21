@@ -5,9 +5,9 @@ import { AdministradorGuard } from './guards/administrador.guard';
 
 const routes: Routes = [
   {
-    path: 'main',
+    path: 'user',
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
-    canLoad: [UsuarioGuard, AdministradorGuard]
+    canLoad: [UsuarioGuard]
   },
   {
     path: 'buscador',
@@ -18,9 +18,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'signup',
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+  },
+
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin-tabs/admin-tabs.module').then( m => m.AdminTabsPageModule),
+    canLoad: [AdministradorGuard]
+  },
+  {
     path: 'login-admin',
     loadChildren: () => import('./pages/login-admin/login-admin.module').then( m => m.LoginAdminPageModule)
   },
+  
   {
     path: '',
     redirectTo: 'login',

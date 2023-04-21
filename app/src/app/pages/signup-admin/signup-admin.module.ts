@@ -4,20 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { SignupAdminPageRoutingModule } from './signup-admin-routing.module';
 
-import { LoginPage } from './login.page';
-import { ComponentsModule } from '../../components/components.module';
+import { SignupAdminPage } from './signup-admin.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    SignupAdminPageRoutingModule,
     ComponentsModule,
     ReactiveFormsModule
   ],
-  declarations: [LoginPage]
+  declarations: [SignupAdminPage]
 })
-export class LoginPageModule {}
+export class SignupAdminPageModule {}

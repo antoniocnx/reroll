@@ -1,0 +1,30 @@
+ion-header ion-toolbar ion-title {
+    text-align: center;
+}
+
+.pick-avatar {
+    width: 80px;
+    opacity: 0.3;
+}
+
+.pick-avatar-seleccionado {
+    transition: opacity 0.5s linear;
+    opacity: 1 !important;
+}
+
+ion-radio-group ion-label {
+    margin-left: 15px;
+}
+
+// .btn-crear-administrador {
+//     margin-top: 15px;
+//     margin-bottom: 15px;
+// }
+
+.btn-crear-administrador {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

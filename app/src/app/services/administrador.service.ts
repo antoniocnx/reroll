@@ -102,7 +102,7 @@ export class AdministradorService {
     await this.cargarToken();
 
     if(this.token === '') {
-      this.navCrtl.navigateRoot('/login-administrador');
+      this.navCrtl.navigateRoot('/login-admin');
       return Promise.resolve(false);
     }
 
@@ -116,7 +116,7 @@ export class AdministradorService {
                   this.admin = resp['admin'];
                   resolve(true);
                 } else {
-                  this.navCrtl.navigateRoot('/login-administrador');
+                  this.navCrtl.navigateRoot('/login-admin');
                   resolve(false);
                 }
               })

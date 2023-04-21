@@ -1,5 +1,6 @@
 <ion-content  class="ion-text-center">
   <div class="form-container">
+    <ion-icon class="icon-user" name="person" [routerLink]="['/login']">Administrador</ion-icon>
     <form [formGroup]="formLogin" (ngSubmit)="login(formLogin)">
     <ion-grid fixed>
 
