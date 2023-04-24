@@ -21,8 +21,8 @@ const routes: Routes = [
         loadChildren: () => import('../postear/postear.module').then(m => m.PostearPageModule)
       },
       {
-        path: 'chat',
-        loadChildren: () => import('../chat/chat.module').then(m => m.ChatPageModule)
+        path: 'chats',
+        loadChildren: () => import('../chats/chats.module').then(m => m.ChatPageModule)
       },
       {
         path: 'perfil',

@@ -87,24 +87,6 @@ export class UsuarioService {
     });
   }
 
-  // registro(usuario: Usuario) {
-  //   return new Promise( resolve => {
-  //     this.http.post<RespuestaSignUp>(`${url}/usuario/create`, usuario)
-  //               .subscribe( resp => {
-  //                 console.log(resp);
-
-  //                 if( resp.status === 'ok' ) {
-  //                   resolve(true);
-  //                   if (usuario.email !== undefined && usuario.password !== undefined) {
-  //                     this.login(usuario.email, usuario.password);
-  //                   }
-  //                 }
-                  
-  //               })
-  //   });
-  // }
-
-
   async guardarToken(token: string) {
     this.token = token;
     await this.storage.set('token', token);

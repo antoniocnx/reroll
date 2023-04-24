@@ -16,6 +16,9 @@ export class LoginPage implements OnInit {
     password: ['123456', [ Validators.required ] ]
   })
 
+  isTypePassword: boolean = true;
+  isLogin = false;
+
   constructor(private usuarioService: UsuarioService,
     private navCrtl: NavController,
     private interfazUsuario: InterfazUsuarioService,
@@ -42,12 +45,8 @@ export class LoginPage implements OnInit {
     
   }
 
-  irALogIn() {
-    this.navCrtl.navigateRoot('/login', { animated: true });
-  }
-
-  irASignUp() {
-    this.navCrtl.navigateRoot('/signup', { animated: true });
+  onChange() {
+    this.isTypePassword = !this.isTypePassword;
   }
 
 }

@@ -26,6 +26,9 @@ export class SignupPage implements OnInit {
     avatar: ['av-robin.png']
   })
 
+  isTypePassword: boolean = true;
+  isLoading: boolean = false;
+
   // formSignup: FormGroup = new FormGroup ({
   //     nombre: new FormControl('Test 4'),
   //     apellidos: new FormControl('Apellidos'),
@@ -48,30 +51,45 @@ export class SignupPage implements OnInit {
 
   ngOnInit() { }
 
+  // Registro sin login automático
+  // async signup(formSignup: FormGroup) {
+  //   if(formSignup.invalid) {
+  //     return;
+  //   }
+
+  //   const valido = await this.usuarioService.registro(formSignup.value);
+
+  //   if(!valido) {
+  //     // Ir a tabs
+  //     this.navCrtl.navigateRoot('/login', { animated: true });
+      
+  //   } else {
+  //     // Alerta de error
+  //     this.interfazUsuario.alertaLogin('Ya existe ese usuario.');
+  //   }
+  // }
+
+  // Registro con login automático
   async signup(formSignup: FormGroup) {
     if(formSignup.invalid) {
       return;
     }
 
     const valido = await this.usuarioService.registro(formSignup.value);
-    console.log('Valor de VALIDO: ', valido);
 
-    if(valido == false) {
+    if(!valido) {
       // Ir a tabs
-      this.navCrtl.navigateRoot('/main/tabs/inicio', { animated: true });
+      const ok = await this.usuarioService.login(this.formSignup.value.email, this.formSignup.value.password);
+
+      if(ok) {
+        // Ir a tabs
+        this.navCrtl.navigateRoot('/user/inicio', { animated: true });
+      }
       
     } else {
       // Alerta de error
       this.interfazUsuario.alertaLogin('Ya existe ese usuario.');
     }
-  }
-
-  irALogIn() {
-    this.navCrtl.navigateRoot('/login', { animated: true });
-  }
-
-  irASignUp() {
-    this.navCrtl.navigateRoot('/signup', { animated: true });
   }
 
   emailAdminNoValido(): ValidatorFn {
@@ -82,6 +100,10 @@ export class SignupPage implements OnInit {
       }
       return null;
     };
+  }
+
+  onChange() {
+    this.isTypePassword = !this.isTypePassword;
   }
 
 }

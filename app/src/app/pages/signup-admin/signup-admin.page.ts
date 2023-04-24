@@ -26,6 +26,9 @@ export class SignupAdminPage implements OnInit {
     avatar: ['av-chopper.png']
   })
 
+  isTypePassword: boolean = true;
+  isLoading: boolean = false;
+
   // formSignup: FormGroup = new FormGroup ({
   //     nombre: new FormControl('Test 4'),
   //     apellidos: new FormControl('Apellidos'),
@@ -72,6 +75,10 @@ export class SignupAdminPage implements OnInit {
       }
       return null;
     };
+  }
+
+  onChange() {
+    this.isTypePassword = !this.isTypePassword;
   }
 
 }

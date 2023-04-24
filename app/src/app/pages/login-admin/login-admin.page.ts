@@ -21,6 +21,9 @@ export class LoginAdminPage implements OnInit {
     password: ['123456', [ Validators.required ] ]
   })
 
+  isTypePassword: boolean = true;
+  isLogin = false;
+
   constructor(private adminService: AdministradorService,
     private navCrtl: NavController,
     private interfazUsuario: InterfazUsuarioService,
@@ -44,5 +47,10 @@ export class LoginAdminPage implements OnInit {
     }
     
   }
+
+  onChange() {
+    this.isTypePassword = !this.isTypePassword;
+  }
+
 
 }

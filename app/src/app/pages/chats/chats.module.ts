@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ChatPageRoutingModule } from './chat-routing.module';
+import { ChatPageRoutingModule } from './chats-routing.module';
 
-import { ChatPage } from './chat.page';
+import { ChatPage } from './chats.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ExploreContainerComponentModule } from '../../explore-container/explore
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    ChatPageRoutingModule
+    ChatPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ChatPage]
 })

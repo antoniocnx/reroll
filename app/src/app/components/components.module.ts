@@ -7,6 +7,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { SwiperModule } from 'swiper/angular';
+import { ChatBoxComponent } from './chat-box/chat-box.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SwiperModule } from 'swiper/angular';
     PostsComponent,
     PostComponent,
     AvatarSelectorComponent,
-    MapaComponent
+    MapaComponent,
+    ChatBoxComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { SwiperModule } from 'swiper/angular';
   exports: [
     PostsComponent,
     AvatarSelectorComponent,
-    MapaComponent
+    MapaComponent,
+    ChatBoxComponent
   ]
 })
 export class ComponentsModule { }
