@@ -35,7 +35,14 @@ servidor.app.use('/administrador', administrador_rutas_1.default);
 servidor.app.use('/articulo', articulo_rutas_1.default);
 servidor.app.use('/chats', chat_rutas_1.default);
 //Conexión a la base de datos
-mongoose_1.default.connect('mongodb://localhost:27017/rerolldb', (err) => {
+// mongoose.connect('mongodb://localhost:27017/rerolldb', (err) => {
+//     if (err) {
+//         throw err;
+//     } else {
+//         console.log("Base de Datos ONLINE");
+//     }
+// })
+mongoose_1.default.connect('mongodb+srv://antoniocn:JaredLeto1994@clustertfg.1asoedx.mongodb.net/reroll?retryWrites=true&w=majority', (err) => {
     if (err) {
         throw err;
     }

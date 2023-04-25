@@ -42,13 +42,22 @@ servidor.app.use('/articulo', articuloRutas);
 servidor.app.use('/chats', chatRutas);
 
 //Conexión a la base de datos
-mongoose.connect('mongodb://localhost:27017/rerolldb', (err) => {
+// mongoose.connect('mongodb://localhost:27017/rerolldb', (err) => {
+//     if (err) {
+//         throw err;
+//     } else {
+//         console.log("Base de Datos ONLINE");
+//     }
+// })
+
+mongoose.connect('mongodb+srv://antoniocn:h9jRJlBO14uSV3fg@clustertfg.1asoedx.mongodb.net/reroll?retryWrites=true&w=majority', (err) => {
     if (err) {
         throw err;
     } else {
         console.log("Base de Datos ONLINE");
     }
 })
+
 
 // Levanta express
 servidor.start(() => {
