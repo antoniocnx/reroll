@@ -8,12 +8,16 @@ import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.compo
 import { MapaComponent } from './mapa/mapa.component';
 import { SwiperModule } from 'swiper/angular';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
+import { ArticuloComponent } from './articulo/articulo.component';
+import { ArticulosComponent } from './articulos/articulos.component';
 
 
 @NgModule({
   declarations: [
     PostsComponent,
     PostComponent,
+    ArticuloComponent, 
+    ArticulosComponent,
     AvatarSelectorComponent,
     MapaComponent,
     ChatBoxComponent
@@ -26,6 +30,7 @@ import { ChatBoxComponent } from './chat-box/chat-box.component';
   ],
   exports: [
     PostsComponent,
+    ArticulosComponent,
     AvatarSelectorComponent,
     MapaComponent,
     ChatBoxComponent

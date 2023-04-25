@@ -30,6 +30,32 @@ export interface Administrador {
   avatar?: string;
 }
 
+export interface Articulo {
+  _id?: string;
+  fecha?: Date;
+  nombre?: string;
+  precio?: Number;
+  categoria?: string;
+  descripcion?: string;
+  localizacion?: string;
+  estado?: string;
+  envio?: string;
+  favorito?: boolean;
+  galeria?: string[];
+  usuario?: Usuario;
+}
+
+export interface RespuestaArticulo {
+  ok: boolean;
+  pagina: number;
+  articulos: Articulo[];
+}
+
+export interface RespuestaCrearArticulo {
+  ok: boolean;
+  articulo: Articulo;
+}
+
 export interface Post {
   _id?: string;
   mensaje?: string;
